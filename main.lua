@@ -9,7 +9,7 @@ local widget =  require ("widget")
 resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
 
 zero = widget.newButton( {label="0", x = display.contentWidth/2 - 110, y = display.contentHeight/2 + 200, width = 50 , shape="rect", fillColor = { default={1,0,0,1}, over={1,0.1,0.7,0.4} } } )
-virgula = widget.newButton( {label=",", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 200, width = 50, shape="rect"} )
+ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 200, width = 50, shape="rect"} )
 igual = widget.newButton( {label="=", x = display.contentWidth/2 + 105, y = display.contentHeight/2 + 200, width = 50, shape="rect"} )
 --zero:setFillColor(0,1,0)
 
@@ -48,38 +48,45 @@ function toqueNaTelaZero(event)
 	end
 end
 
-function toqueNaTelaVirgula(event)
+function toqueNaTelaPonto(event)
 	
 	if event.phase == "began" then
-		resultado.text = resultado.text .. ","
+		resultado.text = resultado.text .. "."
 	end
 end
-
 
 function toqueNaTelaIgual(event)
 
 	if event.phase == "began" then
-		if soma == true then
-			valor =  guardandoSoma + resultado.text .. ""
-			resultado.text = ""
-			resultado.text =  valor
-		elseif sub == true then
-			valor2 = guardandosubtracao - resultado.text .. ""
-			resultado.text = ""
-			resultado.text = valor2
-		elseif divide == true then
-			if resultado.text == "0" then
-				resultado.text = "Erro"
-			else
-			valor3 = guardandoDivisao / resultado.text .. ""
-			resultado.text = ""
-			resultado.text = valor3
+
+		if igual == true then
+			igual = false
+			if soma == true then
+				valor =  guardandoSoma + resultado.text .. ""
+				resultado.text = ""
+				resultado.text =  valor
+			elseif sub == true then
+				valor2 = guardandosubtracao - resultado.text .. ""
+				resultado.text = ""
+				resultado.text = valor2
+			elseif divide == true then
+				if resultado.text == "0" then
+					resultado.text = "Erro"
+				else
+				valor3 = guardandoDivisao / resultado.text .. ""
+				resultado.text = ""
+				resultado.text = valor3
+				end
+			elseif mult == true then
+				valor4 = guardandoMultiplicacao * resultado.text .. ""
+				resultado.text = ""
+				resultado.text = valor4
 			end
-		elseif mult == true then
-			valor4 = guardandoMultiplicacao * resultado.text .. ""
-			resultado.text = ""
-			resultado.text = valor4
 		end
+		soma = false
+		mult = false
+		sub  = false
+		divide = false
 	end
 end
 
@@ -128,7 +135,6 @@ function toqueNaTelaMais(event)
 		mult = false
 		sub  = false
 		divide = false
-
 	end
 end
 
@@ -277,8 +283,9 @@ end
 
 
 zero:addEventListener("touch",toqueNaTelaZero)
-virgula:addEventListener("touch",toqueNaTelaVirgula)
+ponto:addEventListener("touch",toqueNaTelaPonto)
 igual:addEventListener("touch",toqueNaTelaIgual)
+igual = true
 
 um:addEventListener("touch",toqueNaTelaUm)
 dois:addEventListener("touch",toqueNaTelaDois)
