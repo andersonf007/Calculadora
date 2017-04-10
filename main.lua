@@ -8,42 +8,48 @@ local widget =  require ("widget")
 
 resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
 
-zero = widget.newButton( {label="0", x = display.contentWidth/2 - 110, y = display.contentHeight/2 + 200, width = 50 , shape="rect", fillColor = { default={1,0,0,1}, over={1,0.1,0.7,0.4} } } )
-ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 200, width = 50, shape="rect"} )
-igual = widget.newButton( {label="=", x = display.contentWidth/2 + 105, y = display.contentHeight/2 + 200, width = 50, shape="rect"} )
+zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 81 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
+ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 200, width = 79, shape="rect",  fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
+igual = widget.newButton( {label="=", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 200, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 --zero:setFillColor(0,1,0)
 
-um = widget.newButton( {label="1", x = display.contentWidth/2 - 110, y = display.contentHeight/2 + 150, width = 50, shape="rect"} )
-dois = widget.newButton( {label="2", x = display.contentWidth/2 - 35, y = display.contentHeight/2 + 150, width = 50, shape="rect"} )
-tres = widget.newButton( {label="3", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 150, width = 50, shape="rect"} )
-mais = widget.newButton( {label="+", x = display.contentWidth/2 + 105, y = display.contentHeight/2 + 150, width = 50, shape="rect"} )
+um = widget.newButton( {label="1", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 150, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+dois = widget.newButton( {label="2", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+tres = widget.newButton( {label="3", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+mais = widget.newButton( {label="+", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 150, width = 80, shape="rect",fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
-quatro = widget.newButton( {label="4", x = display.contentWidth/2 - 110, y = display.contentHeight/2 + 100, width = 50, shape="rect"} )
-cinco = widget.newButton( {label="5", x = display.contentWidth/2 - 35, y = display.contentHeight/2 + 100, width = 50, shape="rect"} )
-seis = widget.newButton( {label="6", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 100, width = 50, shape="rect"} )
-menos = widget.newButton( {label="-", x = display.contentWidth/2 + 105, y = display.contentHeight/2 + 100, width = 50, shape="rect"} )
+quatro = widget.newButton( {label="4", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 100, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+cinco = widget.newButton( {label="5", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+seis = widget.newButton( {label="6", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+menos = widget.newButton( {label="-", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 100, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
-sete = widget.newButton( {label="7", x = display.contentWidth/2 - 110, y = display.contentHeight/2 + 50, width = 50, shape="rect"} )
-oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2 + 50, width = 50, width = 50, shape="rect"} )
-nove = widget.newButton( {label="9", x = display.contentWidth/2 + 45, y = display.contentHeight/2 + 50, width = 50, width = 50, shape="rect"} )
-mutiplicacao = widget.newButton( {label="x", x = display.contentWidth/2 + 105, y = display.contentHeight/2 + 50, width = 50, shape="rect"} )
+sete = widget.newButton( {label="7", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 50, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+oito = widget.newButton( {label="8", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 50, width = 79, shape="rect",fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+nove = widget.newButton( {label="9", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 50, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} }  } )
+mutiplicacao = widget.newButton( {label="x", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 50, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
 
-ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 110, y = display.contentHeight/2, width = 50, shape="rect"} )
+ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 122, y = display.contentHeight/2, width = 81, shape="rect", fillColor = { default={0.3,0.6,0.3,1}, over={1,0.1,0.7,0.4} } }  )
 --oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2} )
---nove = widget.newButton( {label="9", x = display.contentWidth/2 + 45, y = display.contentHeight/2} )
-divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 105, y = display.contentHeight/2, width = 50, shape="rect"} )
+--porgentagem = widget.newButton( {label="%", x = display.contentWidth/2 + 41, y = display.contentHeight/2 , width = 79, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} }  } )
+divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 122, y = display.contentHeight/2, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
 --soma = false
 --mult = false
 --sub  = false
 --divide = false
 
+guardandoSoma = 0
+
 ------------------------------------------------------------------------------------------------------------------------------
 
 function toqueNaTelaZero(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		resultado.text = resultado.text .. "0"
 	end
 end
@@ -57,10 +63,12 @@ end
 
 function toqueNaTelaIgual(event)
 
+	botaoIgual = true
+
 	if event.phase == "began" then
 
 		if igual == true then
-			igual = false
+		--	igual = false
 			if soma == true then
 				valor =  guardandoSoma + resultado.text .. ""
 				resultado.text = ""
@@ -95,6 +103,10 @@ end
 function toqueNaTelaUm(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "1"
 		elseif resultado.text ~= "0" then
@@ -106,6 +118,10 @@ end
 function toqueNaTelaDois(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "2"
 		elseif resultado.text ~= "0" then
@@ -117,6 +133,10 @@ end
 function toqueNaTelaTres(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "3"
 		elseif resultado.text ~= "0" then
@@ -130,7 +150,6 @@ function toqueNaTelaMais(event)
 	if event.phase == "began" then
 		guardandoSoma = resultado.text
 		resultado.text = ""
-
 		soma = true
 		mult = false
 		sub  = false
@@ -144,6 +163,10 @@ end
 function toqueNaTelaQuatro(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "4"
 		elseif resultado.text ~= "0" then
@@ -152,10 +175,13 @@ function toqueNaTelaQuatro(event)
 	end
 end
 
-
 function toqueNaTelaCinco(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "5"
 		elseif resultado.text ~= "0" then
@@ -164,10 +190,13 @@ function toqueNaTelaCinco(event)
 	end
 end
 
-
 function toqueNaTelaSeis(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "6"
 		elseif resultado.text ~= "0" then
@@ -175,7 +204,6 @@ function toqueNaTelaSeis(event)
 		end
 	end
 end
-
 
 function toqueNaTelaMenos(event)
 
@@ -196,6 +224,10 @@ end
 function toqueNaTelaSete(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "7"
 		elseif resultado.text ~= "0" then
@@ -207,6 +239,10 @@ end
 function toqueNaTelaOito(event)
 	
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "8"
 		elseif resultado.text ~= "0" then
@@ -218,6 +254,10 @@ end
 function toqueNaTelaNove(event)
 
 	if event.phase == "began" then
+		if botaoIgual == true then
+			resultado.text = ""
+			botaoIgual = false
+		end
 		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
 		resultado.text = "9"
 		elseif resultado.text ~= "0" then
@@ -242,14 +282,12 @@ end
 
 --------------------------------------------------------------------------------
 
-
 function toqueNaTelaCa(event)
 
 	if event.phase == "began" then
 		resultado.text = ""
 	end
 end
-
 
 function toqueNaTelaDivisao(event)
 
@@ -264,23 +302,6 @@ function toqueNaTelaDivisao(event)
 	--	resultado.text = resultado.text .. "/"
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 zero:addEventListener("touch",toqueNaTelaZero)
 ponto:addEventListener("touch",toqueNaTelaPonto)
