@@ -6,6 +6,27 @@
 
 local widget =  require ("widget")
 
+local zero
+local ponto
+local igual
+local um
+local dois
+local tres
+local mais
+local quatro
+local cinco
+local seis
+local menos
+local sete
+local oito
+local nove
+local mutiplicacao
+local ca
+local divisao
+local resultado
+
+function criarTelaDaCalculadora()
+	
 resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
 
 zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 81 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
@@ -33,6 +54,10 @@ ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 122, y = displa
 --oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2} )
 --porgentagem = widget.newButton( {label="%", x = display.contentWidth/2 + 41, y = display.contentHeight/2 , width = 79, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} }  } )
 divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 122, y = display.contentHeight/2, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+
+end
+
+criarTelaDaCalculadora()
 
 --soma = false
 --mult = false
@@ -107,9 +132,9 @@ function toqueNaTelaUm(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "1"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "1"
 		end
 	end
@@ -122,9 +147,9 @@ function toqueNaTelaDois(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "2"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "2"
 		end
 	end
@@ -137,9 +162,9 @@ function toqueNaTelaTres(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "3"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "3"
 		end
 	end
@@ -167,9 +192,9 @@ function toqueNaTelaQuatro(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "4"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "4"
 		end
 	end
@@ -182,9 +207,9 @@ function toqueNaTelaCinco(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "5"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "5"
 		end
 	end
@@ -197,9 +222,9 @@ function toqueNaTelaSeis(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "6"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "6"
 		end
 	end
@@ -228,9 +253,9 @@ function toqueNaTelaSete(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "7"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "7"
 		end
 	end
@@ -243,9 +268,9 @@ function toqueNaTelaOito(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "8"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "8"
 		end
 	end
@@ -258,9 +283,9 @@ function toqueNaTelaNove(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
-		if resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000" then
+		if resultado.text == "." or resultado.text == ".." or resultado.text == "..." or resultado.text == "...." or resultado.text == "0" or resultado.text == "00" or resultado.text == "000" or resultado.text == "0000"  then
 		resultado.text = "9"
-		elseif resultado.text ~= "0" then
+		elseif resultado.text ~= "0" and resultado.text ~= "." then
 		resultado.text = resultado.text .. "9"
 		end
 	end
