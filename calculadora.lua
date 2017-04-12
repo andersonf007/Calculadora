@@ -1,14 +1,6 @@
------------------------------------------------------------------------------------------
---
--- main.lua
---
------------------------------------------------------------------------------------------
---[[
-local composer = require ("composer")
---print("composer")
-composer.gotoScene("calculadora")
-]]
 local widget =  require ("widget")
+local composer = require ("composer")
+local scene = composer.newScene()
 
 local zero
 local ponto
@@ -26,50 +18,63 @@ local oito
 local nove
 local mutiplicacao
 local ca
-local botaoEmBranco
 local divisao
 local resultado
 local guardandoSoma = 0
 local pontos = true
-local igual
+local igual = true
 
-function criarTelaDaCalculadora()
+function scene:create(event)
+
+	local grupoDeSena = self.view
 		
 	resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
 
-	zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 242 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
+	zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 81 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
 	ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 200, width = 79, shape="rect",  fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
 	igual = widget.newButton( {label="=", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 200, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 	--zero:setFillColor(0,1,0)
+	grupoDeSena:insert(zero)
+	grupoDeSena:insert(ponto)
+	grupoDeSena:insert(igual)
 
 	um = widget.newButton( {label="1", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 150, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	dois = widget.newButton( {label="2", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	tres = widget.newButton( {label="3", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	mais = widget.newButton( {label="+", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 150, width = 80, shape="rect",fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	grupoDeSena:insert(um)
+	grupoDeSena:insert(dois)
+	grupoDeSena:insert(tres)
+	grupoDeSena:insert(mais)
 
 	quatro = widget.newButton( {label="4", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 100, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	cinco = widget.newButton( {label="5", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	seis = widget.newButton( {label="6", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	menos = widget.newButton( {label="-", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 100, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	grupoDeSena:insert(quatro)
+	grupoDeSena:insert(cinco)
+	grupoDeSena:insert(seis)
+	grupoDeSena:insert(menos)
 
 	sete = widget.newButton( {label="7", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 50, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	oito = widget.newButton( {label="8", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 50, width = 79, shape="rect",fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
 	nove = widget.newButton( {label="9", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 50, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} }  } )
 	mutiplicacao = widget.newButton( {label="x", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 50, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
-
+	grupoDeSena:insert(sete)
+	grupoDeSena:insert(oito)
+	grupoDeSena:insert(nove)
+	grupoDeSena:insert(mutiplicacao)
 
 	ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 122, y = display.contentHeight/2, width = 81, shape="rect", fillColor = { default={0.3,0.6,0.3,1}, over={1,0.1,0.7,0.4} } }  )
-	myRectangle = display.newRect(  display.contentWidth/2 , display.contentHeight/2, 160,50)
-	myRectangle:setFillColor( 1,1,1 )
+	--oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2} )
+	--porgentagem = widget.newButton( {label="%", x = display.contentWidth/2 + 41, y = display.contentHeight/2 , width = 79, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} }  } )
 	divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 122, y = display.contentHeight/2, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	grupoDeSena:insert(ca)
+	grupoDeSena:insert(divisao)
 
 end
 
-criarTelaDaCalculadora()
-
-botaoEmBranco = nil
-
-------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
 function toqueNaTelaZero(event)
 
@@ -78,6 +83,9 @@ function toqueNaTelaZero(event)
 			resultado.text = ""
 			botaoIgual = false
 		end
+		resultado.text = resultado.text .. "0"
+	end
+	if event.phase == "ended" then
 		resultado.text = resultado.text .. "0"
 	end
 end
@@ -343,25 +351,47 @@ function toqueNaTelaDivisao(event)
 	end
 end
 
-zero:addEventListener("touch",toqueNaTelaZero)
-ponto:addEventListener("touch",toqueNaTelaPonto)
-igual:addEventListener("touch",toqueNaTelaIgual)
-igual = true
+--------------------------------------------------------------------------------
 
-um:addEventListener("touch",toqueNaTelaUm)
-dois:addEventListener("touch",toqueNaTelaDois)
-tres:addEventListener("touch",toqueNaTelaTres)
-mais:addEventListener("touch",toqueNaTelaMais)
+function scene:show(event)
 
-quatro:addEventListener("touch",toqueNaTelaQuatro)
-cinco:addEventListener("touch",toqueNaTelaCinco)
-seis:addEventListener("touch",toqueNaTelaSeis)
-menos:addEventListener("touch",toqueNaTelaMenos)
+	zero:addEventListener("touch",toqueNaTelaZero)
+	ponto:addEventListener("touch",toqueNaTelaPonto)
+	igual:addEventListener("touch",toqueNaTelaIgual)
 
-sete:addEventListener("touch",toqueNaTelaSete)
-oito:addEventListener("touch",toqueNaTelaOito)
-nove:addEventListener("touch",toqueNaTelaNove)
-mutiplicacao:addEventListener("touch",toqueNaTelaMult)
+	um:addEventListener("touch",toqueNaTelaUm)
+	dois:addEventListener("touch",toqueNaTelaDois)
+	tres:addEventListener("touch",toqueNaTelaTres)
+	mais:addEventListener("touch",toqueNaTelaMais)
 
-ca:addEventListener("touch",toqueNaTelaCa)
-divisao:addEventListener("touch",toqueNaTelaDivisao)
+	quatro:addEventListener("touch",toqueNaTelaQuatro)
+	cinco:addEventListener("touch",toqueNaTelaCinco)
+	seis:addEventListener("touch",toqueNaTelaSeis)
+	menos:addEventListener("touch",toqueNaTelaMenos)
+
+	sete:addEventListener("touch",toqueNaTelaSete)
+	oito:addEventListener("touch",toqueNaTelaOito)
+	nove:addEventListener("touch",toqueNaTelaNove)
+	mutiplicacao:addEventListener("touch",toqueNaTelaMult)
+
+	ca:addEventListener("touch",toqueNaTelaCa)
+	divisao:addEventListener("touch",toqueNaTelaDivisao)
+
+
+end
+
+function scene:hide(event)
+end
+
+
+function scene:destroy(event)
+end
+
+
+
+scene:addEventListener( "create", scene ) -- adiciona o evento da funcao de criar 
+scene:addEventListener( "show", scene ) -- adiciona o evento da funcao de entre 
+scene:addEventListener( "hide", scene ) -- adiciona o evento da funcao de sair
+scene:addEventListener( "destroy", scene )-- adiciona o evento da funcao de destruir 
+
+return scene
