@@ -24,47 +24,44 @@ local mutiplicacao
 local ca
 local divisao
 local resultado
+local guardandoSoma = 0
+local pontos = true
 
 function criarTelaDaCalculadora()
-	
-resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
+		
+	resultado = native.newTextField(display.contentWidth  - 160, display.contentHeight - 300 , display.contentWidth , 50 )
 
-zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 81 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
-ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 200, width = 79, shape="rect",  fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
-igual = widget.newButton( {label="=", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 200, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
---zero:setFillColor(0,1,0)
+	zero = widget.newButton( {label="0", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 200, width = 81 , shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
+	ponto = widget.newButton( {label=".", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 200, width = 79, shape="rect",  fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } } )
+	igual = widget.newButton( {label="=", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 200, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	--zero:setFillColor(0,1,0)
 
-um = widget.newButton( {label="1", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 150, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-dois = widget.newButton( {label="2", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-tres = widget.newButton( {label="3", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-mais = widget.newButton( {label="+", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 150, width = 80, shape="rect",fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	um = widget.newButton( {label="1", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 150, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	dois = widget.newButton( {label="2", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	tres = widget.newButton( {label="3", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 150, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	mais = widget.newButton( {label="+", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 150, width = 80, shape="rect",fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
-quatro = widget.newButton( {label="4", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 100, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-cinco = widget.newButton( {label="5", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-seis = widget.newButton( {label="6", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-menos = widget.newButton( {label="-", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 100, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	quatro = widget.newButton( {label="4", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 100, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	cinco = widget.newButton( {label="5", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	seis = widget.newButton( {label="6", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 100, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	menos = widget.newButton( {label="-", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 100, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
-sete = widget.newButton( {label="7", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 50, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-oito = widget.newButton( {label="8", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 50, width = 79, shape="rect",fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
-nove = widget.newButton( {label="9", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 50, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} }  } )
-mutiplicacao = widget.newButton( {label="x", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 50, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	sete = widget.newButton( {label="7", x = display.contentWidth/2 - 122, y = display.contentHeight/2 + 50, width = 81, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	oito = widget.newButton( {label="8", x = display.contentWidth/2 - 40, y = display.contentHeight/2 + 50, width = 79, shape="rect",fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} } }  )
+	nove = widget.newButton( {label="9", x = display.contentWidth/2 + 41, y = display.contentHeight/2 + 50, width = 79, shape="rect", fillColor = { default={1,1,1,1}, over={1,0.1,0.7,0.4} }  } )
+	mutiplicacao = widget.newButton( {label="x", x = display.contentWidth/2 + 122, y = display.contentHeight/2 + 50, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
 
-ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 122, y = display.contentHeight/2, width = 81, shape="rect", fillColor = { default={0.3,0.6,0.3,1}, over={1,0.1,0.7,0.4} } }  )
---oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2} )
---porgentagem = widget.newButton( {label="%", x = display.contentWidth/2 + 41, y = display.contentHeight/2 , width = 79, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} }  } )
-divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 122, y = display.contentHeight/2, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
+	ca = widget.newButton( {label="CA", x = display.contentWidth/2 - 122, y = display.contentHeight/2, width = 81, shape="rect", fillColor = { default={0.3,0.6,0.3,1}, over={1,0.1,0.7,0.4} } }  )
+	--oito = widget.newButton( {label="8", x = display.contentWidth/2 - 35, y = display.contentHeight/2} )
+	--porgentagem = widget.newButton( {label="%", x = display.contentWidth/2 + 41, y = display.contentHeight/2 , width = 79, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} }  } )
+	divisao = widget.newButton( {label="/", x = display.contentWidth/2 + 122, y = display.contentHeight/2, width = 80, shape="rect", fillColor = { default={1,0.2,0,1}, over={1,0.1,0.7,0.4} } }  )
 
 end
 
 criarTelaDaCalculadora()
 
---soma = false
---mult = false
---sub  = false
---divide = false
 
-guardandoSoma = 0
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -82,7 +79,10 @@ end
 function toqueNaTelaPonto(event)
 	
 	if event.phase == "began" then
+		if pontos == true then
 		resultado.text = resultado.text .. "."
+		pontos = false
+	end
 	end
 end
 
@@ -173,12 +173,17 @@ end
 function toqueNaTelaMais(event)
 
 	if event.phase == "began" then
+		if resultado.text == "." then
+			resultado.text = "Erro"
+		else
 		guardandoSoma = resultado.text
 		resultado.text = ""
 		soma = true
 		mult = false
 		sub  = false
 		divide = false
+		pontos = true
+		end
 	end
 end
 
@@ -240,6 +245,7 @@ function toqueNaTelaMenos(event)
 		mult = false
 		sub  = true
 		divide = false
+		pontos = true
 	--	resultado.text = resultado.text .. "-"
 	end
 end
@@ -301,6 +307,7 @@ function toqueNaTelaMult(event)
 		mult = true
 		sub  = false
 		divide = false
+		pontos = true
 	--	resultado.text = resultado.text .. "*"
 	end
 end
@@ -311,6 +318,7 @@ function toqueNaTelaCa(event)
 
 	if event.phase == "began" then
 		resultado.text = ""
+		pontos = true
 	end
 end
 
@@ -324,6 +332,7 @@ function toqueNaTelaDivisao(event)
 		mult = false
 		sub  = false
 		divide = true
+		pontos = true
 	--	resultado.text = resultado.text .. "/"
 	end
 end
